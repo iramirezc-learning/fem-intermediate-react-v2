@@ -2,6 +2,8 @@
 
 This is my personal repository for the course [Intermediate React (v2)](https://frontendmasters.com/courses/intermediate-react-v2/) hosted by [FrontEnd Masters](https://frontendmasters.com/).
 
+> _**Note:** for the "Server Side Rendering" section code, switch to the `server-side-rendering` branch._
+
 ## Course Details
 
 Teacher
