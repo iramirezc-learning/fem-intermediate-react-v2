@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { render } from "react-dom";
 import { Router } from "@reach/router";
 import NavBar from "./NavBar";
 import SearchParams from "./SearchParams";
@@ -24,4 +23,4 @@ const App = () => {
   );
 };
 
-render(<App />, document.getElementById("root"));
+export default App;
