@@ -60,6 +60,13 @@ const Context = () => {
   return (
     <section>
       <h2>useContext example</h2>
+      <p>
+        useContext is helpful when trying to access a value from a child of a
+        parent that can be in any higher level (not the direct parent), this is
+        helpful because now you do not need to pass the props all the way down
+        to components that will just ignore that property. It is like a portal
+        from point A to point B.
+      </p>
       <UserContext.Provider value={contextHook}>
         <FirstLevel />
       </UserContext.Provider>

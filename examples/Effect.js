@@ -14,6 +14,13 @@ const Effect = () => {
   return (
     <section>
       <h2>useEffect example</h2>
+      <p>
+        useEffect &quot;schedules&quot; a function to be executed after the
+        component is rendered. When dependencies are provided like{" "}
+        <code>[a, b, c]</code>, then it will only be executed if any of those
+        values change. If an empty array is provided <code>[]</code>, then the
+        effect will only be executed once.
+      </p>
       <div>
         <b>Current time:</b> {time.toLocaleTimeString()}
       </div>

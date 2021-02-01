@@ -9,6 +9,10 @@ const State = () => {
   return (
     <section>
       <h2>useState example</h2>
+      <p>
+        useState returns a variable holding the current or default state
+        provided along with a setter function to change it.
+      </p>
       <div style={{ display: "flex" }}>
         <button onClick={() => setIsGreen(!isGreen)}>Toggle</button>
         <div
