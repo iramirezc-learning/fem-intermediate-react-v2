@@ -16,21 +16,11 @@ Published
 
 > June 11, 2019
 
-## My Stats
-
-Started on
-
-> Jan 25, 2021
-
-Completed on
-
-> :warning: WIP
-
-Total Pomodoro time
-
-> :warning: WIP
-
 ## Course Resources
 
 - [Course Repository](https://github.com/btholt/complete-intro-to-react-v5)
 - [Course Website](https://btholt.github.io/complete-intro-to-react-v5/)
+
+## Notes about this branch `server-side-rendering`
+
+Because ReactDOM server is not compatible with `Suspense` and `lazy` loading (implemented in the "Code Splitting" section), I needed to branch out from the "Emotion" section so this can work.
