@@ -14,7 +14,7 @@ const styles = {
     background-color: ${colors.dark};
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 9;
   `,
   doggy: css`
     display: inline-block;
