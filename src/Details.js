@@ -1,16 +1,17 @@
-import React from "react";
+import React, { lazy } from "react";
 import { navigate } from "@reach/router";
-import PetApi from "@frontendmasters/pet";
+import { animal as fetchPet } from "@frontendmasters/pet";
 import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundary";
 import ThemeContext from "./ThemeContext";
-import Modal from "./Modal";
+
+const Modal = lazy(() => import("./Modal"));
 
 class Details extends React.Component {
   state = { loading: true, showModal: false };
 
   componentDidMount() {
-    PetApi.animal(+this.props.id)
+    fetchPet(+this.props.id)
       .then((apiResult) => {
         if (apiResult instanceof Error) {
           throw apiResult;
