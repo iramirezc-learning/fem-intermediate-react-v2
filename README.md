@@ -2,8 +2,6 @@
 
 This is my personal repository for the course [Intermediate React (v2)](https://frontendmasters.com/courses/intermediate-react-v2/) hosted by [FrontEnd Masters](https://frontendmasters.com/).
 
-> _**Note:** for the "Server Side Rendering" section code, switch to the `server-side-rendering` branch._
-
 ## Course Details
 
 Teacher
@@ -31,6 +29,13 @@ Completed on
 Total Pomodoro time
 
 > :warning: WIP
+
+## Branches
+
+The author created a branch per each section of the course. I decided to create branches only for the sections listed here:
+
+- [Server Side Rendering](https://github.com/iramirezc-learning/fem-intermediate-react-v2/tree/server-side-rendering)
+- [TypeScript](https://github.com/iramirezc-learning/fem-intermediate-react-v2/tree/typescript)
 
 ## Course Resources
 
