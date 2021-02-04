@@ -36,6 +36,7 @@ The author created a branch per each section of the course. I decided to create 
 
 - [Server Side Rendering](https://github.com/iramirezc-learning/fem-intermediate-react-v2/tree/server-side-rendering)
 - [TypeScript](https://github.com/iramirezc-learning/fem-intermediate-react-v2/tree/typescript)
+- [Redux](https://github.com/iramirezc-learning/fem-intermediate-react-v2/tree/redux)
 
 ## Course Resources
 
