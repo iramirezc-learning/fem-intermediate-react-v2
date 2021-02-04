@@ -1,9 +1,9 @@
 import React, { lazy } from "react";
 import { navigate } from "@reach/router";
 import { animal as fetchPet } from "@frontendmasters/pet";
+import { connect } from "react-redux";
 import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundary";
-import ThemeContext from "./ThemeContext";
 
 const Modal = lazy(() => import("./Modal"));
 
@@ -61,6 +61,8 @@ class Details extends React.Component {
       showModal,
     } = this.state;
 
+    const { theme } = this.props;
+
     if (loading) {
       return <h1>Loading...</h1>;
     }
@@ -71,13 +73,9 @@ class Details extends React.Component {
         <div>
           <h1>{name}</h1>
           <h2>{`${animal} - ${breed} - ${location}`}</h2>
-          <ThemeContext.Consumer>
-            {([theme]) => (
-              <button style={theme.button} onClick={this.toggleModal}>
-                Adopt {name}
-              </button>
-            )}
-          </ThemeContext.Consumer>
+          <button style={theme.button} onClick={this.toggleModal}>
+            Adopt {name}
+          </button>
           <p>{description}</p>
           {showModal && (
             <Modal>
@@ -96,10 +94,14 @@ class Details extends React.Component {
   }
 }
 
+const mapStateToProps = ({ theme }) => ({ theme });
+
+const WrappedDetails = connect(mapStateToProps)(Details);
+
 const DetailsWithErrorBoundary = (props) => {
   return (
     <ErrorBoundary>
-      <Details {...props} />
+      <WrappedDetails {...props} />
     </ErrorBoundary>
   );
 };

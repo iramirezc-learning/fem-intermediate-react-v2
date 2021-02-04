@@ -1,0 +1,4 @@
+export default {
+  CHANGE_LOCATION: "CHANGE_LOCATION",
+  CHANGE_THEME: "CHANGE_THEME",
+};
