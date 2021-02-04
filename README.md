@@ -24,11 +24,11 @@ Started on
 
 Completed on
 
-> :warning: WIP
+> Feb 4, 2021
 
 Total Pomodoro time
 
-> :warning: WIP
+> 17 hours!!! 😅
 
 ## Branches
 
