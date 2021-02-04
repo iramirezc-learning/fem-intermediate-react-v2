@@ -18,21 +18,11 @@ Published
 
 > June 11, 2019
 
-## My Stats
-
-Started on
-
-> Jan 25, 2021
-
-Completed on
-
-> :warning: WIP
-
-Total Pomodoro time
-
-> :warning: WIP
-
 ## Course Resources
 
 - [Course Repository](https://github.com/btholt/complete-intro-to-react-v5)
 - [Course Website](https://btholt.github.io/complete-intro-to-react-v5/)
+
+## Notes about this branch `typescript`
+
+It was a pain in the ass to make `@emotion` with typescript, it turned out that I only needed to change `"jsx": "preserve"` in the `tsconfig.json` file.
