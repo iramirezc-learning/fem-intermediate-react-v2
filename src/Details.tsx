@@ -1,18 +1,34 @@
 import React, { lazy } from "react";
-import { navigate } from "@reach/router";
-import { animal as fetchPet } from "@frontendmasters/pet";
+import { navigate, RouteComponentProps } from "@reach/router";
+import PetApi, { Photo, AnimalResponse } from "@frontendmasters/pet";
 import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundary";
 import ThemeContext from "./ThemeContext";
 
 const Modal = lazy(() => import("./Modal"));
 
-class Details extends React.Component {
-  state = { loading: true, showModal: false };
+class Details extends React.Component<RouteComponentProps<{ id: string }>> {
+  state = {
+    name: "",
+    animal: "",
+    location: "",
+    description: "",
+    media: [] as Photo[],
+    breed: "",
+    url: "",
+    loading: true,
+    showModal: false,
+    error: null,
+  };
 
   componentDidMount() {
-    fetchPet(+this.props.id)
-      .then((apiResult) => {
+    if (!this.props.id) {
+      navigate("/");
+      return;
+    }
+
+    PetApi.animal(+this.props.id)
+      .then((apiResult: AnimalResponse) => {
         if (apiResult instanceof Error) {
           throw apiResult;
         }
@@ -30,7 +46,7 @@ class Details extends React.Component {
           loading: false,
         });
       })
-      .catch((err) => {
+      .catch((err: Error) => {
         this.setState({ error: err });
       });
   }
@@ -81,12 +97,10 @@ class Details extends React.Component {
           <p>{description}</p>
           {showModal && (
             <Modal>
-              <div>
-                <h1>Would you like to adopt {name}?</h1>
-                <div className="buttons">
-                  <button onClick={this.adopt}>Yes</button>
-                  <button onClick={this.toggleModal}>No</button>
-                </div>
+              <h1>Would you like to adopt {name}?</h1>
+              <div className="buttons">
+                <button onClick={this.adopt}>Yes</button>
+                <button onClick={this.toggleModal}>No</button>
               </div>
             </Modal>
           )}
@@ -96,7 +110,9 @@ class Details extends React.Component {
   }
 }
 
-const DetailsWithErrorBoundary = (props) => {
+const DetailsWithErrorBoundary = (
+  props: RouteComponentProps<{ id: string }>
+) => {
   return (
     <ErrorBoundary>
       <Details {...props} />

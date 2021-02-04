@@ -1,7 +1,11 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { useState } from "react";
 
-const useDropdown = (label, defaultState, options) => {
+const useDropdown = (
+  label: string,
+  defaultState: string,
+  options: string[]
+): [string, () => JSX.Element, (newState: string) => void] => {
   const dropdownId = `use-dropdown-${label.toLowerCase().replace(" ", "-")}`;
   const [state, setState] = useState(defaultState);
 

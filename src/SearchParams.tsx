@@ -1,20 +1,22 @@
-import React, { useEffect, useState, useContext } from "react";
-import {
-  ANIMALS,
-  breeds as fetchBreeds,
-  animals as fetchAnimals,
-} from "@frontendmasters/pet";
+import React, {
+  useEffect,
+  useState,
+  useContext,
+  FunctionComponent,
+} from "react";
+import { RouteComponentProps } from "@reach/router";
+import PetApi, { ANIMALS, Animal } from "@frontendmasters/pet";
 import Results from "./Results";
 import useDropdown from "./useDropdown";
 import ThemeContext from "./ThemeContext";
 import ThemeDropdown from "./ThemeDropdown";
 
-const SearchParams = () => {
+const SearchParams: FunctionComponent<RouteComponentProps> = () => {
   const [location, setLocation] = useState("Seattle, WA");
-  const [breeds, setBreeds] = useState([]);
+  const [breeds, setBreeds] = useState([] as string[]);
   const [animal, AnimalDropdown] = useDropdown("Animal", "dog", ANIMALS);
   const [breed, BreedDropdown, setBreed] = useDropdown("Breed", "", breeds);
-  const [pets, setPets] = useState([]);
+  const [pets, setPets] = useState([] as Animal[]);
   const [theme, setTheme] = useContext(ThemeContext);
 
   useEffect(() => {
@@ -23,7 +25,7 @@ const SearchParams = () => {
 
     if (!animal) return;
 
-    fetchBreeds(animal)
+    PetApi.breeds(animal)
       .then(({ breeds: breedsFromApi = [] }) => {
         const breedsNames = breedsFromApi.map(({ name }) => name);
 
@@ -33,7 +35,7 @@ const SearchParams = () => {
   }, [animal, setBreeds, setBreed]);
 
   async function fetchPets() {
-    const { animals: petsFromApi } = await fetchAnimals({
+    const { animals: petsFromApi } = await PetApi.animals({
       location,
       breed,
       type: animal,

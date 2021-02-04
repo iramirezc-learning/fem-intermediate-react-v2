@@ -1,4 +1,10 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
+import { ITheme } from "./ThemeContext";
+
+interface IProps {
+  theme: ITheme;
+  onChange: (theme: ITheme) => void;
+}
 
 const themeColorOptions = [
   { name: "Peru", value: "peru" },
@@ -7,13 +13,13 @@ const themeColorOptions = [
   { name: "Medium Orchid", value: "mediumorchid" },
 ];
 
-const ThemeDropdown = (props) => {
+const ThemeDropdown: FunctionComponent<IProps> = (props) => {
   // I don't want to use `useContext`,
   // so, I'm passing the state and the setter
   // as props
   const { theme, onChange } = props;
 
-  const handleThemeOnChange = (e) => {
+  const handleThemeOnChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const color = e.target.value;
 
     onChange({
