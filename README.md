@@ -16,20 +16,6 @@ Published
 
 > June 11, 2019
 
-## My Stats
-
-Started on
-
-> Jan 25, 2021
-
-Completed on
-
-> :warning: WIP
-
-Total Pomodoro time
-
-> :warning: WIP
-
 ## Branches
 
 The author created a branch per each section of the course. I decided to create branches only for the sections listed here:
@@ -41,3 +27,7 @@ The author created a branch per each section of the course. I decided to create 
 
 - [Course Repository](https://github.com/btholt/complete-intro-to-react-v5)
 - [Course Website](https://btholt.github.io/complete-intro-to-react-v5/)
+
+## Notes about this branch `redux`
+
+I wanted to merge this branch to `main` along with the tests, but tests broke. I might look some time in the future (or not) to make them work with redux.
