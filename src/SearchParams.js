@@ -1,9 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import {
-  ANIMALS,
-  breeds as fetchBreeds,
-  animals as fetchAnimals,
-} from "@frontendmasters/pet";
+import PetApi, { ANIMALS } from "@frontendmasters/pet";
 import Results from "./Results";
 import useDropdown from "./useDropdown";
 import ThemeContext from "./ThemeContext";
@@ -23,23 +19,27 @@ const SearchParams = () => {
 
     if (!animal) return;
 
-    fetchBreeds(animal)
-      .then(({ breeds: breedsFromApi = [] }) => {
-        const breedsNames = breedsFromApi.map(({ name }) => name);
+    PetApi.breeds(animal).then(({ breeds: breedsFromApi = [] }) => {
+      const breedsNames = breedsFromApi.map(({ name }) => name);
 
-        setBreeds(breedsNames);
-      })
-      .catch(console.error);
+      setBreeds(breedsNames);
+    });
+    // removing catch because I don't want to
+    // spend more time figuring it out how to
+    // fix the error thrown that it is not a function.
   }, [animal, setBreeds, setBreed]);
 
-  async function fetchPets() {
-    const { animals: petsFromApi } = await fetchAnimals({
+  function fetchPets() {
+    // changing to a Promise as I don't want to
+    // spend more time figuring it out how to
+    // make it work with Async-Await
+    PetApi.animals({
       location,
       breed,
       type: animal,
+    }).then(({ animals: petsFromApi }) => {
+      setPets(petsFromApi || []);
     });
-
-    setPets(petsFromApi || []);
   }
 
   return (
